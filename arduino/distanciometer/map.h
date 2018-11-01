@@ -11,13 +11,11 @@ class Map{
         float mapping(int pValue=0);
         void  setAutoscaleMode(int pValue=0);
         void  autoscale(int pValue=0);
-
-
     private:
-        int _in_low, _in_hi, _out_low, _out_hi;
+        int _inLow, _inHi, _outLow, _outHi;
         float _m, _b;
-        int _autoscale_mode;
-        float _autoscale_low, _autoscale_hi;
+        int _autoscaleMode;
+        float _autoscaleLow, _autoscaleHi;
 };
 
 #endif

@@ -9,16 +9,16 @@
 #define PEAKWIDTH         7
 #define GROUNDVALUE       0
 #define FULLSCALE       127
-#define MAXVALUE0       300
-#define MAXVALUE1       127
-#define MAXVALUE2       127
-#define MAXVALUE3       127
+//#define MAXVALUE0       300
+//#define MAXVALUE1       127
+//#define MAXVALUE2       127
+//#define MAXVALUE3       127
 #define MEAS_TIME        10
 
 float filteredValues[N_SENSORS];
 float calibratValues[N_SENSORS];
-int   minValues[N_SENSORS]={10,15,0,-40};
-int   maxValues[N_SENSORS]={MAXVALUE0,MAXVALUE1,MAXVALUE2,MAXVALUE3};
+//int   minValues[N_SENSORS]={10,15,0,-40};
+//int   maxValues[N_SENSORS]={MAXVALUE0,MAXVALUE1,MAXVALUE2,MAXVALUE3};
 Map   mappedValues[N_SENSORS];
 Peak  peakValues[N_SENSORS];
 
