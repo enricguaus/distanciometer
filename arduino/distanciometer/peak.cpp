@@ -20,18 +20,17 @@ void Peak::push(int pValue){
 }
 
 int Peak::get(void){
-    //if((_last>_lastlast)&&(_last>=_current)) _peak=_last;
     float meanLow=0.0;
     float meanHi=0.0;
     for(int i=0;i<int(_depth/2);i++){
-        meanLow += float(1.0/float(int(_depth/2))) * _history[i];
-        meanHi  += float(1.0/float(int(_depth/2))) * _history[1+int(_depth/2)+i];
+        meanHi  += float(1.0/float(int(_depth/2))) * _history[i];
+        meanLow += float(1.0/float(int(_depth/2))) * _history[1+int(_depth/2)+i];
     }
-    if((meanLow>=_history[int(_depth/2)])&&(meanHi>=_history[int(_depth/2)])) _peak=_history[int(_depth/2)];
+    if((meanLow<=_history[int(_depth/2)])&&(meanHi<=_history[int(_depth/2)])) _peak=_history[int(_depth/2)];
     return _peak;
 }
 
 int Peak::isMax(void){
-  return 0;
+    return 0;
 }
 
