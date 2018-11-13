@@ -15,6 +15,7 @@ void Peak::setDepth(int pDepth){
 }
 
 void Peak::push(int pValue){
+    if(pValue<0) pValue=0;
     for(int i=_depth-1;i>0;i--) _history[i]=_history[i-1];
     _history[0]=pValue;
 }
@@ -26,11 +27,10 @@ int Peak::get(void){
         meanHi  += float(1.0/float(int(_depth/2))) * _history[i];
         meanLow += float(1.0/float(int(_depth/2))) * _history[1+int(_depth/2)+i];
     }
-    if((meanLow<=_history[int(_depth/2)])&&(meanHi<=_history[int(_depth/2)])) _peak=_history[int(_depth/2)];
+    if((meanLow<_history[int(_depth/2)])&&(meanHi<_history[int(_depth/2)])) _peak=_history[int(_depth/2)];
     return _peak;
 }
 
 int Peak::isMax(void){
     return 0;
 }
-
