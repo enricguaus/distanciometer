@@ -5,7 +5,7 @@
 #define FIRST_SENSOR_PIN  0
 #define N_SENSORS         4
 #define FILTER_COEFF      0.005
-#define CALIBR_COEFF      0.0001
+#define CALIBR_COEFF      0.0005
 #define PEAKWIDTH        21
 #define GROUNDVALUE       0
 #define FULLSCALE       127
@@ -14,11 +14,11 @@
 
 #define AUTOSCALE         0
 #define MINVALUE0         5
-#define MAXVALUE0       125
+#define MAXVALUE0       105
 #define MINVALUE1         5
-#define MAXVALUE1        50
+#define MAXVALUE1        40
 #define MINVALUE2         5
-#define MAXVALUE2        40
+#define MAXVALUE2        25
 #define MINVALUE3         5
 #define MAXVALUE3        20
 
@@ -59,13 +59,11 @@ void loop(){
     filteredValues[i] = filteredValues[i] + ((data - filteredValues[i]) * FILTER_COEFF);
     calibratValues[i] = calibratValues[i] + ((data - calibratValues[i]) * CALIBR_COEFF);
     filteredValue = filteredValues[i]-calibratValues[i];
-    // ---- DEBUG: Monitoring filtered values
-    //Serial.print(" | "); Serial.print(filteredValue); Serial.print(" - "); 
-    //Serial.print(filteredValue);
+
     peakValues[i].push(filteredValue); 
     data=mappedValues[i].mapping(peakValues[i].get());       // O busco els pics primer?
     // ---- DEBUG: Monitoring map values
-    //Serial.print(" | "); Serial.print(data); Serial.print(" - "); 
+    //Serial.print(" | "); Serial.print(filteredValue); Serial.print(" - "); Serial.print(data); Serial.print(" - "); 
     data=rampValues[i].pushget(data);
     // ---- Print to Serial port
     Serial.print(int(data));
